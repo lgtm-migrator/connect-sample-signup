@@ -1,0 +1,55 @@
+{
+  "name": "connect-sammple-signup",
+  "version": "1.0.0",
+  "description": "This application is a sample Signup Application for Fewlines Connect.",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf build && npm run build-css && npm run build-assets",
+    "build-assets": "mkdir -p build/images && cp -r src/assets/images/* build/images/",
+    "db-migrate": "sequelize db:migrate",
+    "postbuild-assets": "node digestify.js build/images",
+    "build-css": "postcss src/assets/css/*.css -d build/css/",
+    "postbuild-css": "node digestify.js build/css",
+    "heroku-postbuild": "npm run build",
+    "start": "node server.js",
+    "test": "eslint --ignore-pattern coverage/ . && jest --runInBand --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fewlinesco/connect-sample-signup.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fewlinesco/connect-sample-signup/issues"
+  },
+  "homepage": "https://github.com/fewlinesco/connect-sample-signup#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "csurf": "^1.9.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.16.3",
+    "express-validator": "^5.3.0",
+    "helmet": "^3.13.0",
+    "i18n": "^0.8.3",
+    "node-forge": "^0.8.5",
+    "pg": "^7.4.3",
+    "pug": "^2.0.3",
+    "sequelize": "^5.13.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.1.5",
+    "cssnano": "^4.1.0",
+    "eslint": "^6.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "jest": "^24.8.0",
+    "jest-puppeteer": "^4.3.0",
+    "postcss": "^7.0.2",
+    "postcss-cli": "^6.0.0",
+    "postcss-custom-properties": "^9.0.2",
+    "prettier": "^1.14.2",
+    "puppeteer": "^1.8.0",
+    "sequelize-cli": "^5.5.0"
+  }
+}

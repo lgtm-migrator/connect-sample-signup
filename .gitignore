@@ -1,0 +1,6 @@
+.env
+.tool-versions
+coverage
+build
+manifest.json
+node_modules

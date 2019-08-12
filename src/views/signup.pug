@@ -1,0 +1,45 @@
+extends layout.pug
+
+block content
+  main.connect-box
+    header.connect-box--header
+      h1
+        |#{__("Create a new account")}
+    form(method='POST')
+      input(type="hidden" name="_csrf" value=csrfToken)
+      input(type='hidden' name='nonce' value=nonce)
+      input(type='hidden' name='redirect_uri' value=redirect_uri)
+      input(type='hidden' name='transaction_id' value=transaction_id)
+      section.connect-box--content
+          .input-group(class=(errors.first_name ? 'error' : ''))
+            label
+              |#{__("First name")}
+            input(type='text' name='first_name' value=first_name)
+            if errors.first_name
+              .input-error
+                |#{__(errors.first_name.msg)}
+          .input-group(class=(errors.last_name ? 'error' : ''))
+            label
+              |#{__("Last name")}
+            input(type='text' name='last_name' value=last_name)
+            if errors.last_name
+              .input-error
+                |#{__(errors.last_name.msg)}
+          .input-group(class=(errors.country_code ? 'error' : ''))
+            label
+              |#{__("Country")}
+            select(name='country_code')
+              option(value="")
+                |#{__("Choose a country")}
+              each country in countries
+                option(value=country.code selected=(country_code==country.code))
+                  |#{country.name}
+            if errors.country_code
+              .input-error
+                |#{__(errors.country_code.msg)}
+            
+      footer.connect-box--footer
+        .controls
+          button(type='submit')
+            |#{__("Sign Up")}
+        

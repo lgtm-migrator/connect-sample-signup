@@ -1,0 +1,42 @@
+version: 2
+jobs:
+  test:
+    working_directory: ~/connect-sample-signup
+    docker:
+      - image: circleci/node:10.13.0-browsers
+        environment:
+          CONNECT_SIGNUP_SECRET_KEY: secret
+          DATABASE_URL: postgres://connect_signup@localhost:5432/connect_signup_test?sslmode=disable
+      - image: circleci/postgres:9.6-alpine
+        environment:
+          POSTGRES_USER: connect_signup
+          POSTGRES_DB: connect_signup_test
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install packages
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Waiting for Postgres to be ready
+          command: |
+            for i in `seq 1 10`;
+            do
+              nc -z localhost 5432 && echo Success && exit 0
+              echo -n .
+              sleep 1
+            done
+            echo Failed waiting for Postgres && exit 1
+      - run:
+          name: Tests
+          command: yarn test
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test

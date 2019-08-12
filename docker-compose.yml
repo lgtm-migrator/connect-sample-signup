@@ -1,0 +1,10 @@
+version: "2"
+services:
+  database:
+    image: postgres:9.6-alpine
+    environment:
+      POSTGRES_USER: "connect_signup"
+      POSTGRES_PASSWORD: "connect_signup"
+      POSTGRES_DB: "connect_signup"
+    ports:
+      - "5432:5432"

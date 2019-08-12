@@ -1,0 +1,399 @@
+:root {
+  /* Colors */
+  --accent-color: #6badbd;
+  --background-color: white;
+  --hint-color: #cccccc;
+  --primary-color: #0082c3;
+  --secondary-color: #f7f7f7;
+  --shadow-color: rgba(0, 0, 0, 0.16);
+  --tertiary-color: #eeeeee;
+  --text-color: #707070;
+  --error-color: red;
+  --error-border-color: lightpink;
+  /* Sizes */
+  --box-width: 450px;
+}
+
+html {
+  box-sizing: border-box;
+  color: var(--text-color);
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a,
+.link {
+  color: var(--primary-color);
+}
+
+.clearfix {
+  clear: both;
+}
+.align-left {
+  flex: 1 1 auto;
+  float: left;
+  justify-self: flex-start;
+  text-align: left;
+}
+.align-right {
+  flex: 1 1 auto;
+  float: right;
+  justify-self: flex-end;
+  text-align: right;
+}
+
+.connect-box {
+  background-color: var(--background-color);
+  border-radius: 5px;
+  box-shadow: 0 0 6px var(--shadow-color);
+  margin: 100px auto auto auto;
+  position: relative;
+  width: var(--box-width);
+  z-index: 10;
+}
+.connect-box--overlayed {
+  z-index: 30;
+  position: absolute;
+  margin: 50px auto;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.connect-box .title {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.connect-box--header {
+  background-color: var(--secondary-color);
+  padding: 40px 50px;
+  text-align: center;
+}
+.connect-box--overlayed .connect-box--header {
+  background-color: var(--background-color);
+}
+.connect-box--header .logo {
+  width: 182px;
+}
+
+.connect-box--flash-error:before {
+  border-radius: 50%;
+  border: 1px solid var(--error-color);
+  color: var(--error-color);
+  content: "!";
+  display: inline-block;
+  font-weight: bold;
+  height: 25px;
+  width: 25px;
+}
+
+.connect-box--flash-error {
+  color: var(--error-color);
+  text-align: center;
+  padding: 1em 0 0.75em 0;
+  border-bottom: 1px solid var(--error-border-color);
+  border-top: 1px solid var(--error-border-color);
+}
+
+.connect-box--content {
+  padding: 40px 50px;
+  text-align: center;
+}
+.connect-box--overlayed .connect-box--content {
+  background-color: var(--secondary-color);
+  padding: 20px 50px;
+}
+
+.connect-box--footer {
+  margin: auto;
+  padding: 0 50px 90px 50px;
+  width: var(--box-width);
+}
+.connect-box--overlayed .connect-box--footer {
+  background-color: var(--background-color);
+  border-top: none;
+  padding: 30px 50px;
+}
+
+.connect-box input,
+.connect-box select {
+  border-radius: 6px;
+  border: 1px solid var(--hint-color);
+  font-size: 0.875em;
+  height: 50px;
+  padding: 15px 19px 11px 19px;
+  width: 100%;
+}
+.connect-box input:focus {
+  outline-color: var(--primary-color);
+}
+.connect-box input::placeholder {
+  color: var(--hint-color);
+}
+
+.connect-box label {
+  display: block;
+  font-size: 0.875em;
+  margin-bottom: 5px;
+}
+
+.connect-box button,
+.connect-box a.button {
+  background-color: transparent;
+  border-radius: 6px;
+  border: none;
+  color: var(--primary-color);
+  font-size: 1.25em;
+  font-weight: 600;
+  height: 50px;
+  padding: 13px 0;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.connect-box a.button {
+  padding: 11px 0;
+}
+.connect-box button[disabled] {
+  color: var(--hint-color);
+}
+.connect-box button[type="submit"] {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  padding: 13px 35px;
+}
+.connect-box button[type="submit"][disabled] {
+  background-color: var(--tertiary-color);
+  color: var(--hint-color);
+}
+
+.connect-box button.right-arrow,
+.connect-box a.button.right-arrow {
+  padding-right: 22px;
+}
+.connect-box button[type="submit"].right-arrow {
+  padding-right: 47px;
+}
+.connect-box button.right-arrow:after,
+.connect-box a.button.right-arrow:after {
+  border-style: solid;
+  border-width: 2px 2px 0 0;
+  content: "";
+  display: block;
+  height: 12px;
+  position: absolute;
+  right: 0px;
+  top: 18px;
+  transform: rotate(45deg);
+  width: 12px;
+}
+.connect-box button[type="submit"].right-arrow:after {
+  right: 25px;
+}
+.connect-box button.right-arrow:before,
+.connect-box a.button.right-arrow:before {
+  box-shadow: inset 0 0 0 32px;
+  content: "";
+  height: 2px;
+  position: absolute;
+  right: 0px;
+  top: 23px;
+  transform-origin: right top;
+  width: 15px;
+}
+.connect-box button[type="submit"].right-arrow:before {
+  right: 25px;
+}
+
+.connect-box button.left-arrow,
+.connect-box .button.left-arrow {
+  padding-left: 22px;
+}
+.connect-box button[type="submit"].left-arrow {
+  padding-left: 47px;
+}
+.connect-box button.left-arrow:after,
+.connect-box a.button.left-arrow:after {
+  border-style: solid;
+  border-width: 0 0 2px 2px;
+  content: "";
+  display: block;
+  height: 12px;
+  left: 0px;
+  position: absolute;
+  top: 18px;
+  transform: rotate(45deg);
+  width: 12px;
+}
+.connect-box button[type="submit"].left-arrow:after {
+  left: 22px;
+}
+.connect-box button.left-arrow:before,
+.connect-box a.button.left-arrow:before {
+  box-shadow: inset 0 0 0 32px;
+  content: "";
+  height: 2px;
+  left: 0px;
+  position: absolute;
+  top: 23px;
+  transform-origin: right top;
+  width: 15px;
+}
+.connect-box button[type="submit"].left-arrow:before {
+  left: 22px;
+}
+
+.connect-box .input-group {
+  margin: 20px 0;
+  text-align: left;
+}
+
+.input-group.error input,
+.input-group.error select {
+  border: 1px solid var(--error-color);
+  margin-bottom: 2px;
+}
+.input-error {
+  color: var(--error-color);
+  font-size: 0.75em;
+  text-align: right;
+}
+
+.checkbox-group {
+  border-bottom: 1px solid var(--hint-color);
+  margin: 10px 0;
+  padding: 10px 0;
+  text-align: left;
+}
+.checkbox-group:last-child {
+  border-bottom: none;
+}
+.checkbox-group .title {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+.checkbox-group .description {
+  font-size: 0.8125rem;
+}
+.checkbox-group .container {
+  cursor: pointer;
+  display: block;
+  margin-bottom: 12px;
+  padding-left: 35px;
+  position: relative;
+  user-select: none;
+}
+.checkbox-group .container input {
+  opacity: 0;
+  position: absolute;
+}
+.checkbox-group .checkmark {
+  background-color: var(--background-color);
+  border-radius: 4px;
+  border: 1px solid var(--text-color);
+  font-weight: 600;
+  height: 22px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 22px;
+}
+.checkbox-group .container input:checked ~ .checkmark:after {
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+  border-color: var(--primary-color);
+  content: "";
+  display: block;
+  font-size: 1.1em;
+  height: 6px;
+  left: 5px;
+  position: absolute;
+  text-align: center;
+  top: 5px;
+  transform: rotate(-45deg);
+  width: 11px;
+}
+.checkbox-group input[disabled] ~ .checkmark {
+  background-color: var(--tertiary-color);
+}
+.checkbox-group input[disabled]:checked ~ .checkmark:after {
+  border-color: var(--text-color);
+}
+
+.connect-box .controls {
+  align-items: center;
+  display: flex;
+  margin-bottom: 5px;
+}
+.connect-box .controls:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+.connect-box .forgot-password {
+  font-size: 0.6875em;
+  text-align: left;
+}
+
+.app-name {
+  font-weight: 600;
+}
+
+@media (max-width: 500px) {
+  .languages {
+    top: 10px;
+  }
+  .connect-box {
+    margin-top: 0;
+  }
+  header {
+    padding-top: 70px;
+  }
+}
+
+/* Background */
+.background {
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 1916px 524px;
+  border-bottom: 5px solid var(--accent-color);
+  height: 524px;
+  min-width: var(--box-width);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+@media (max-width: 640px) {
+  .background {
+    display: none;
+  }
+  html,
+  body,
+  .connect-box,
+  .connect-box--footer,
+  .languages {
+    width: 100%;
+  }
+
+  .dropdown-content {
+    margin-left: 45%;
+    right: 2%;
+  }
+
+  .dropdown-content::before {
+    left: 80%;
+  }
+}
