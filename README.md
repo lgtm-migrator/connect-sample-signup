@@ -5,14 +5,14 @@ Here is a simplified view of the app:
 
 ```
                          ┌─────────────────┐
- transaction_id,  ---->  │                 │  ---> redirect to fewlines-connect 
- redirect_uri,           │  Custom Signup  │       with transaction_id and 
- locale                  │                 │       security_code 
+ transaction_id,  ---->  │                 │  ---> redirect to fewlines-connect
+ redirect_uri,           │  Custom Signup  │       with transaction_id and
+ locale                  │                 │       security_code
                          └─────────────────┘                          ┆
                                ⌃                                      ┆
                                ┆                                      ┆
                                └ callback from fewlines-connect   <---┘
-                                 with transaction_id and user_id   
+                                 with transaction_id and user_id
 ```
 
 Fewlines Connect only stores the information required to authenticate a User
@@ -41,9 +41,9 @@ You will need to set some environment variable to use the database. If you want
 to use Docker for the database, you can just use `docker-compose up`.
 
 ```shell
-npm install
+yarn install
 cp .env.sample .env
-npm run build
+yarn build
 ```
 
 Edit `.env` to match your own information:
@@ -53,19 +53,19 @@ Edit `.env` to match your own information:
 
 Once your database is ready:
 ```shell
-npm run db-migrate
+yarn db-migrate
 ```
 
 Finally, to launch the server:
 
 ```shell
-npm start
+yarn start
 ```
 
 ## Testing
 
 ```shell
-npm test
+yarn test
 ```
 
 ## Contributing
